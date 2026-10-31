@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moviest - Catálogo de Filmes e Séries</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topo">
+      <div class="topo-conteudo">
+        <div class="marca">
+          <h1>🎬 Moviest</h1>
+          <p>Seu catálogo de filmes e séries</p>
+        </div>
+        <button type="button" id="abrir-modal" class="primario">+ Cadastrar título</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="resumo" aria-label="Resumo">
+        <div class="resumo-item">
+          <span id="total">0</span><small>Total</small>
+        </div>
+        <div class="resumo-item destaque-ok">
+          <span id="assistidos">0</span><small>Assistidos</small>
+        </div>
+        <div class="resumo-item destaque-pendente">
+          <span id="pendentes">0</span><small>Para assistir</small>
+        </div>
+      </section>
+
+      <section class="barra-filtros" aria-label="Busca e filtros">
+        <input type="search" id="busca" placeholder="🔍 Buscar por título..." />
+        <select id="filtro-categoria" aria-label="Filtrar por categoria"></select>
+      </section>
+
+      <section aria-label="Catálogo">
+        <div id="lista" class="grade"></div>
+        <p id="mensagem-vazio" class="vazio" hidden></p>
+      </section>
+    </main>
+
+    <dialog id="modal" aria-labelledby="modal-titulo">
+      <form id="form-item" novalidate>
+        <div class="modal-cabecalho">
+          <h2 id="modal-titulo">Cadastrar título</h2>
+          <button type="button" id="fechar-modal" class="icone" aria-label="Fechar">✕</button>
+        </div>
+
+        <label>Título
+          <input type="text" id="titulo" maxlength="120" placeholder="Ex.: Interestelar" />
+        </label>
+        <label>Categoria
+          <select id="categoria"></select>
+        </label>
+        <label>Ano de lançamento
+          <input type="number" id="ano" step="1" placeholder="Ex.: 2014" />
+        </label>
+        <label>Capa (opcional)
+          <input type="file" id="capa" accept="image/png,image/jpeg,image/webp,image/gif" />
+          <small class="dica">PNG, JPG, WEBP ou GIF, até 2 MB. Sem imagem, uma capa genérica é usada.</small>
+        </label>
+        <label class="check">
+          <input type="checkbox" id="assistido" /> Já assistido
+        </label>
+
+        <p id="erro-form" class="erro" role="alert"></p>
+
+        <div class="modal-acoes">
+          <button type="button" id="cancelar-modal" class="secundario">Cancelar</button>
+          <button type="submit" class="primario">Adicionar</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
